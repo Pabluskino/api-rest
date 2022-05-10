@@ -10,8 +10,13 @@
   "author": "Pablo González",
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.20.0",
+    "crypto": "^1.0.1",
     "express": "^4.17.3",
+    "express-handlebars": "^6.0.5",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.3",
     "mongoose": "^6.3.1"
   },
   "devDependencies": {
