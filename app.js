@@ -8,7 +8,7 @@ const api = require('./routes')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.engine('.hbs', hbs({
+app.engine('.hbs', hbs.engine({
     defaultLayout: 'default',
     extname: '.hbs'
 }))
