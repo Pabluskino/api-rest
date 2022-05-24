@@ -1,6 +1,6 @@
 'use strict'
 
-const { response } = require('express')
+const { response } = require('../app')
 const services = require('../services')
 
 function isAuth (req, res, next) {
@@ -16,7 +16,7 @@ function isAuth (req, res, next) {
             next()
         })
         .catch(response => {
-            res.status(response.status)
+            res.status(response.status).send({message:response.message})
         })
 }
 

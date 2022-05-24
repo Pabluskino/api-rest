@@ -1,22 +1,38 @@
 <form id="login" method="post">
-    <input type="email" name="email" value="" placeholder="Tu Email">
+    <input type="email" name="name" placeholder="Tu Email">
     <br><br>
     <input type="password" name="password" value="" placeholder="Tu Contraseña">
     <br><br>
-    <input type="submit" value="Login">
+    <input id="bLogin" type="submit" value="Login">
 </form>
 
 <script type="text/javascript">
-    const formLogin = document.querySelector('#login')
-    const formData = new FormData(formLogin)
+    const $bLogin = document.getElementById('bLogin')
 
-    formLogin.addEventListener('submit', event => {
+
+    $bLogin.addEventListener('click', event => {
         event.preventDefault()
-        fetch('/api/sigin', {
+        var data = {
+            email: document.getElementsByName('name')[0].value,
+            password: document.getElementsByName('password')[0].value
+        }
+
+        console.log(`Datos al entrar en login.hbs ${data.email}`)
+
+        fetch('/api/signin', {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.token)
+                sessionStorage.setItem('token',data.token)
+            })
+            .catch(err => { console.log(`Error en el login ${err}`) })
     })
+
 </script>
