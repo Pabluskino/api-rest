@@ -18,8 +18,8 @@ app.engine('.hbs', hbs.engine({
 }))
 app.set('view engine', '.hbs');
 
-app.get('/productos', (req, res) => {
-	res.render('productos');
+app.get('/', (req, res) => {
+	res.render('product');
 });
 
 app.use('/api', api)
